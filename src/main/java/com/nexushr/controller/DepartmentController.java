@@ -32,4 +32,18 @@ public class DepartmentController {
     public ResponseEntity<Department> getDepartmentById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getDepartmentById(id));
     }
+
+    @PutMapping("/{id}")
+    public Department updateDepartment(
+            @PathVariable Long id,
+            @RequestBody Department department) {
+
+        return service.updateDepartment(id, department);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteDepartment(@PathVariable Long id) {
+        service.deleteDepartment(id);
+        return "Department deleted successfully";
+    }
 }
