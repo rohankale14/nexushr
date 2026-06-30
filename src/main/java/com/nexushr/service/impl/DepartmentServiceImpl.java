@@ -35,7 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department updateDepartment(Long id, Department department) {
 
         Department existingDepartment =
-                repository.findById(id).orElse(null);
+                repository.findById(id).orElseThrow(()->new RuntimeException("Department not found for this id"));
 
         if (existingDepartment != null) {
 
